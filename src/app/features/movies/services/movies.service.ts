@@ -1,13 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Movie } from "../models/movies";
-import { BehaviorSubject, Observable, map } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
-
-  #movies$$ = new BehaviorSubject<Movie[]>(MOVIE_LIST);
  
   getMovies(): Movie[] { 
     return MOVIE_LIST;

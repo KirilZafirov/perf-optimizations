@@ -18,7 +18,6 @@ export class MoviePageComponent {
   // #fb = inject(FormBuilder);
   #moviesService = inject(MoviesService);
   movies = this.#moviesService.getMovies();
-
   movieForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     description: new FormControl(''),
