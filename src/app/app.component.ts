@@ -1,17 +1,15 @@
-import { Component } from '@angular/core';
-import { CommonModule, NgFor } from '@angular/common';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router'; 
-import { MovieComponent } from './features/movies/movie/movie.component';
-import { MovieListComponent } from './features/movies/movie-list/movie-list.component';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterLink, RouterLinkActive, RouterOutlet,],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
-  title = 'perf-optimizations';
-
+export class AppComponent   {
+  title = 'perf-optimizations'; 
 }
+ 

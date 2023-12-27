@@ -3,7 +3,7 @@
   <h3>Movie of the year</h3>
 
   <h4>Oppenheimer</h4>
-  <img   src="https://imgcinemas.it/wp-content/uploads/2023/11/oppenheimer_RGB.jpg" alt="our best movie" width="700px"/>
+  <img  style="object-fit: 'contain'" [ngSrc]="'oppenheimer_RGB.jpg'"[priority]="true" sizes="100vw" alt="our best movie" width="700" height="900" />
  
 </div>
 
@@ -14,5 +14,10 @@
   <!-- add other movie properties... -->
   <button type="submit">Add Movie</button>
 </form>
-
-<app-movie-list [movies]="movies" (onDeleteMovie)="deleteMovie($event)" (onChangeMovie)="changeMovie($event)"/>
+@defer (on viewport) {
+  <app-movie-list [movies]="$any(movies())" (onDeleteMovie)="deleteMovie($event)" (onChangeMovie)="changeMovie($event)"/>
+} @placeholder {
+  <div>
+   Loading... 
+  </div>
+}

@@ -1,5 +1,5 @@
 <div class="container">
-  <ng-container *ngFor="let movie of movies">
+  @for(movie of movies; track movie.id) {
     <app-movie [movie]="movie" (deleteMovie)="onDeleteMovie.emit($event)" (changeMovie)="onChangeMovie.emit($event)"/>  
-   </ng-container>
+  } 
 </div> 

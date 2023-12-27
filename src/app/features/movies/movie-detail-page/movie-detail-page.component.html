@@ -1,5 +1,5 @@
 <div class="movie-detail-container">
-  <img [src]="movie.imageUrl" [alt]="movie.title" class="movie-image">
+  <img [ngSrc]="movie.imageUrl" [alt]="movie.title" class="movie-image" [priority]="true" width="300" height="400">
   <h1>{{movie.title}}</h1>
   <p>{{movie.description}}</p> 
   <p>Rating: {{movie.rating}}</p> 

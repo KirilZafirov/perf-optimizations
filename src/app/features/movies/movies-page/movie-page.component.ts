@@ -1,28 +1,30 @@
-import { ChangeDetectionStrategy, Component, Input, Output, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { MovieComponent } from '../movie/movie.component';
-import { AsyncPipe, NgFor } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { NgFor, NgOptimizedImage, provideImgixLoader } from '@angular/common';
 import { MovieListComponent } from '../movie-list/movie-list.component';
-import { MOVIE_LIST, MoviesService } from '../services/movies.service';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MoviesService } from '../services/movies.service';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Movie } from '../models/movies';
-
+import { toSignal } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'app-movie-page',
   standalone: true,
-  imports: [MovieListComponent, NgFor, ReactiveFormsModule, AsyncPipe],
+  imports: [MovieListComponent, NgFor, ReactiveFormsModule , NgOptimizedImage],
   templateUrl: './movie-page.component.html',
   styleUrl: './movie-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush, 
+  // providers: [
+  //   provideImgixLoader("https://imgcinemas.it/wp-content/uploads/2023/11/")
+  // ]  
 })
 export class MoviePageComponent {
-  // #fb = inject(FormBuilder);
+ 
   #moviesService = inject(MoviesService);
-  movies = this.#moviesService.getMovies();
+  movies =  toSignal(this.#moviesService.$getMovies());
   movieForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     description: new FormControl(''),
   });
-
+ 
   deleteMovie(movieId: number) {
     this.#moviesService.deleteMovie(movieId);
   }
@@ -35,4 +37,5 @@ export class MoviePageComponent {
     this.#moviesService.addMovie(this.movieForm.value);
     this.movieForm.reset();
   }
+ 
 }
