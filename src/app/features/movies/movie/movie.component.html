@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-body">
+    <img [src]="''" class="card-img-top" alt="...">
+    <h5 class="card-title">{{movie.name}}</h5>
+    <p class="card-text">{{movie.description}}</p>
+    <p class="card-chip">Heavy Calculation:{{getResult(movie.rating)}} </p>
+  </div>
+  <div class="card-footer">
+    <a [routerLink]="['/movie', movie.id]" class="btn btn-primary">View</a>
+    <button (click)="deleteMovie.emit(movie.id)" class="btn btn-danger">Delete</button>
+  </div>
+</div>

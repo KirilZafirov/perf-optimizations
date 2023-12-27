@@ -1,0 +1,8 @@
+<form [formGroup]="movieForm" (ngSubmit)="addMovie()">
+  <input formControlName="name" placeholder="Name">
+  <input formControlName="description" placeholder="Description">
+  <!-- add other movie properties... -->
+  <button type="submit">Add Movie</button>
+</form>
+
+<app-movie-list [movies]="movies" (onDeleteMovie)="deleteMovie($event)"/>
