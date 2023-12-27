@@ -5,18 +5,27 @@
     margin: 5px;
     border: 1px solid #ccc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    margin-bottom: 32px;
+    &:hover {
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    }
   }
-
-  .card:hover {
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-  }
+ 
 
   .card-body {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    flex-direction: row;
   }
 
+  .card-description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex: auto;
+    padding-right: 16px;
+  }
   .card-content {
     display: flex;
     flex-direction: column;
@@ -25,7 +34,6 @@
 
   .btn-primary {
     color: red;
-    /* Make the link color red */
   }
 
   .card-footer {
@@ -35,15 +43,15 @@
     /* Light grey background */
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.15);
     /* Shadow at the top */
-    padding: 0 16px;
+    padding: 16px;
   }
 
   .card-chip {
     display: inline-block;
     padding: 0 10px;
-    height: 25px;
-    font-size: 12px;
-    line-height: 25px;
+    height: 36px;
+    font-size: 16px;
+    line-height: 36px;
     border-radius: 15px;
     background-color: #f1f1f1;
     color: #333;

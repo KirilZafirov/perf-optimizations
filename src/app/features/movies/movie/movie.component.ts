@@ -12,7 +12,8 @@ import { Movie } from '../models/movies';
 export class MovieComponent {
   @Input() movie!: Movie;
   @Output() public readonly deleteMovie = new EventEmitter<number>();
-
+  @Output() public readonly changeMovie = new EventEmitter<Movie>();
+  
   getResult(id: number): number {
     return this.fibonacci(id);
   }

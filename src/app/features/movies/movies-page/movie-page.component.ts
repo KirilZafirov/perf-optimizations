@@ -5,13 +5,14 @@ import { AsyncPipe, NgFor } from '@angular/common';
 import { MovieListComponent } from '../movie-list/movie-list.component';
 import { MOVIE_LIST, MoviesService } from '../services/movies.service';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Movie } from '../models/movies';
 
 @Component({
   selector: 'app-movie-page',
   standalone: true,
-  imports: [MovieListComponent, NgFor , ReactiveFormsModule , AsyncPipe],
+  imports: [MovieListComponent, NgFor, ReactiveFormsModule, AsyncPipe],
   templateUrl: './movie-page.component.html',
-  styleUrl: './movie-page.component.scss', 
+  styleUrl: './movie-page.component.scss',
 })
 export class MoviePageComponent {
   // #fb = inject(FormBuilder);
@@ -25,6 +26,10 @@ export class MoviePageComponent {
 
   deleteMovie(movieId: number) {
     this.#moviesService.deleteMovie(movieId);
+  }
+
+  changeMovie(movie: Movie) {
+    this.#moviesService.editMovie(movie);
   }
 
   addMovie() {

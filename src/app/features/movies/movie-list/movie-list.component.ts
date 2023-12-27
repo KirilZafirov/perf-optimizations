@@ -14,4 +14,6 @@ import { NgFor } from '@angular/common';
 export class MovieListComponent {
   @Input() movies!: Movie[];
   @Output() onDeleteMovie = new EventEmitter<number>();
+  @Output() onChangeMovie = new EventEmitter<Movie>();
+  
 }

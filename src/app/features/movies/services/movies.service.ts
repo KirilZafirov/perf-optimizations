@@ -27,6 +27,14 @@ export class MoviesService {
     MOVIE_LIST.unshift(createMovie);
   }
 
+  editMovie(movie: Movie): void { 
+    const findMovie = MOVIE_LIST.find(m => m.id === movie.id);
+    if(findMovie) {
+      findMovie.name = `Changed ${movie.name}`;
+      findMovie.description = `Changed ${movie.description}`;
+    }
+  }
+
   deleteMovie(movieId: number): void { 
     MOVIE_LIST.splice(MOVIE_LIST.findIndex(movie => movie.id === movieId), 1);
   }

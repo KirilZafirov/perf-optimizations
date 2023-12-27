@@ -1,3 +1,13 @@
+ 
+<div class="gallery-item">
+  <h3>Movie of the year</h3>
+
+  <h4>Oppenheimer</h4>
+  <img   src="https://imgcinemas.it/wp-content/uploads/2023/11/oppenheimer_RGB.jpg" alt="our best movie" width="700px"/>
+ 
+</div>
+
+<h3>Add a Movie</h3>
 <form [formGroup]="movieForm" (ngSubmit)="addMovie()">
   <input formControlName="name" placeholder="Name">
   <input formControlName="description" placeholder="Description">
@@ -5,4 +15,4 @@
   <button type="submit">Add Movie</button>
 </form>
 
-<app-movie-list [movies]="movies" (onDeleteMovie)="deleteMovie($event)"/>
+<app-movie-list [movies]="movies" (onDeleteMovie)="deleteMovie($event)" (onChangeMovie)="changeMovie($event)"/>
