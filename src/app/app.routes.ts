@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
-import { MovieDetailPageComponent } from './features/movies/movie-detail-page/movie-detail-page.component'; 
 import { MoviePageComponent } from './features/movies/movies-page/movie-page.component';
-import { StatisticsPageComponent } from './features/statistics/statistics-page/statistics-page.component';
-
+ 
 export const routes: Routes = [
   {
     path: '',
@@ -11,14 +9,14 @@ export const routes: Routes = [
   },
   {
     path: 'movies',
-    component: MoviePageComponent, 
+    component: MoviePageComponent,
   },
   {
     path: 'movie/:id',
-    component: MovieDetailPageComponent
+    loadComponent: () => import('./features/movies/movie-detail-page/movie-detail-page.component'),
   },
   {
     path: 'statistics',
-    component: StatisticsPageComponent, 
+    loadComponent: () => import('./features/statistics/statistics-page/statistics-page.component').then(m => m.StatisticsPageComponent),
   },
 ];

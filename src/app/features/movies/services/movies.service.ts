@@ -1,13 +1,15 @@
 import { Injectable } from "@angular/core";
 import { Movie } from "../models/movies";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
- 
-  getMovies(): Movie[] { 
-    return MOVIE_LIST;
+  
+  movies$$: BehaviorSubject<Movie[]> = new BehaviorSubject<Movie[]>(MOVIE_LIST);
+  $getMovies(): Observable<Movie[]> { 
+    return this.movies$$.asObservable();
   }
 
   getMovieById(movieId: number): Movie | undefined { 
@@ -21,7 +23,8 @@ export class MoviesService {
       rating: Math.floor(Math.random() * 10),
       imageUrl: `https://picsum.photos/seed/${MOVIE_LIST.length}/200/300`,
     } 
-    MOVIE_LIST.unshift(createMovie);
+    this.movies$$.next([createMovie, ...MOVIE_LIST]);
+    // MOVIE_LIST.unshift(createMovie);
   }
 
   editMovie(movie: Movie): void { 
