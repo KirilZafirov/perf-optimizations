@@ -1,8 +1,7 @@
-import { ChangeDetectorRef, Component, Inject, NgZone, ViewChild } from "@angular/core";
+import { Component, Inject, NgZone, OnInit } from "@angular/core";
 
-import { Chart, ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
-// import { BaseChartDirective, NgChartsModule } from "ng2-charts"; 
-// NgChartsModule
+import Chart from 'chart.js/auto';
+
 @Component({
   selector: 'app-statistics',
   standalone: true,
@@ -10,13 +9,12 @@ import { Chart, ChartConfiguration, ChartData, ChartEvent, ChartType } from 'cha
   templateUrl: './statistics-page.component.html',
   styleUrl: './statistics-page.component.scss',
 })
-export class StatisticsPageComponent {
+export class StatisticsPageComponent implements OnInit {
  
-  #zone = Inject(NgZone);
-  #cd = Inject(ChangeDetectorRef);
   chart: any = [];
-  
+   
   ngOnInit() {
+
     this.chart = new Chart('canvas', {
       type: 'bar',
       data: {
@@ -38,5 +36,5 @@ export class StatisticsPageComponent {
       },
     });
   }
-   
+
 }
